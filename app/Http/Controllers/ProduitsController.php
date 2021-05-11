@@ -16,7 +16,7 @@ class ProduitsController extends Controller
      */
     public function index()
     {
-        $produits = Produits_habibe::all();
+        $produits = Produits_habibe::orderBy('created_at','DESC')->get();
         return view('admin.produits.index', [
             'produits' => $produits
         ]);
@@ -88,7 +88,14 @@ class ProduitsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $produits = Produits_habibe::findOrFail($id);
+        $produits->name = $request->name;
+        $produits->prix = $request->prix;
+        $produits->description = $request->description;
+        $produits->entreprise_id = $request->entreprise_id;
+        if ($produits->save()) {
+            return back()->with('success', 'modification avec success');
+        }
     }
 
     /**
@@ -99,6 +106,9 @@ class ProduitsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $produits = Produits_habibe::findOrFail($id);
+        if ($produits->delete()) {
+            return back()->with('success', 'suppression avec success');
+        }
     }
 }

@@ -13,4 +13,8 @@ class Categorie_produits_habibe extends Model
         'name',
         'imagePath',
       ];
+
+    public function produits(){
+        return $this->hasMany(Produits_habibe::class);
+    }
 }

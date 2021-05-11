@@ -18,4 +18,8 @@ class Produits_habibe extends Model
         'imagePath',
         'description'
       ];
+
+    public function categorie(){
+        return $this->belongsTo(Categorie_produits_habibe::class,'categorie_produits_habibe_id');
+    }
 }

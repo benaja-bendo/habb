@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategorieHabibeController;
 use App\Http\Controllers\CommercialController;
 use App\Http\Controllers\ProduitsController;
 use Illuminate\Foundation\Application;
@@ -32,3 +33,4 @@ Route::get('commerciaux/edit/{id}', [CommercialController::class,'edit'])->name(
 Route::put('commerciaux/edit/{id}', [CommercialController::class,'update'])->name('commerciaux.update');
 
 Route::resource('produits',ProduitsController::class);
+Route::resource('categorie_habibe',CategorieHabibeController::class);
