@@ -319,7 +319,7 @@
                                     </li> --}}
                                     <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                         data-menu-toggle="hover">
-                                        <a href="#" class="menu-link">
+                                        <a href="{{ route('fournisseur.index') }}" class="menu-link">
                                             <i class="menu-bullet menu-bullet-line">
                                                 <span></span>
                                             </i>

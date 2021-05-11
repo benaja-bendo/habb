@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategorieProduitsHabibesTable extends Migration
+class CreateApprovisionProduitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateCategorieProduitsHabibesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorie_produits_habibes', function (Blueprint $table) {
+        Schema::create('approvision_produits', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('produits_habibe_id')
+                ->constrained()
+                ->onDelete('cascade');
+            $table->bigInteger('qte');
+            $table->string('fournisseur_id')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class CreateCategorieProduitsHabibesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorie_produits_habibes');
+        Schema::dropIfExists('approvision_produits');
     }
 }

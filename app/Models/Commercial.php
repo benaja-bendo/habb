@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class Commercial extends Model
+class Commercial extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory,Notifiable,HasApiTokens;
 
     protected $fillable =[
         'prenom',
@@ -19,4 +22,8 @@ class Commercial extends Model
         'adresse',
         'genre'
       ];
+
+    protected $hidden=[
+        'password'
+    ];
 }
